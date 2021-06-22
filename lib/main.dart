@@ -15,30 +15,17 @@ class _WordWidgetState extends State<WordWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'English Learning',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('English'),
-        ),
-        // body: Center(
-        //   child: Text('English'),
-        // ),
-        body: Center(
-          child: GestureDetector(
-            onTap: () {},
-            child: Card(
-              color: Colors.blueAccent,
-              //z轴的高度，设置Card的阴影
-              elevation: 20.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
-              clipBehavior: Clip.antiAlias,
-              semanticContainer: false,
-              child: getChild(),
-            ),
-          ),
-        ),
+    return GestureDetector(
+      onTap: () {},
+      child: Card(
+        color: Colors.blueAccent,
+        //z轴的高度，设置Card的阴影
+        elevation: 20.0,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        clipBehavior: Clip.antiAlias,
+        semanticContainer: false,
+        child: getChild(),
       ),
     );
   }
@@ -60,6 +47,14 @@ class _WordWidgetState extends State<WordWidget> {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Widget CardSection = Container(
+      child: Row(
+        children: [
+          WordWidget(),
+        ],
+      ),
+    );
+
     return MaterialApp(
       title: 'English Learning',
       home: Scaffold(
@@ -70,16 +65,17 @@ class MyApp extends StatelessWidget {
         //   child: Text('English'),
         // ),
         body: Center(
-          child: Card(
-            color: Colors.blueAccent,
-            //z轴的高度，设置Card的阴影
-            elevation: 20.0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0))),
-            clipBehavior: Clip.antiAlias,
-            semanticContainer: false,
-            child: getChild(),
-          ),
+          // child: Card(
+          //   color: Colors.blueAccent,
+          //   //z轴的高度，设置Card的阴影
+          //   elevation: 20.0,
+          //   shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          //   clipBehavior: Clip.antiAlias,
+          //   semanticContainer: false,
+          //   child: getChild(),
+          // ),
+          child: CardSection,
         ),
       ),
     );
