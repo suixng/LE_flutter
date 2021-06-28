@@ -11,12 +11,15 @@ class WordWidget extends StatefulWidget {
 
 class _WordWidgetState extends State<WordWidget> {
   bool _isPressed = false;
-  String _word = 'english';
+  String _word = 'English';
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        isPressed();
+        print("tap");
+      },
       child: Card(
         color: Colors.blueAccent,
         //z轴的高度，设置Card的阴影
@@ -42,16 +45,26 @@ class _WordWidgetState extends State<WordWidget> {
       ),
     );
   }
+
+  void isPressed() {
+    setState(() {
+      if (_isPressed) {
+        _isPressed = false;
+        _word = '英语, 英文的';
+      } else {
+        _isPressed = true;
+        _word = "English";
+      }
+    });
+  }
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget CardSection = Container(
-      child: Row(
-        children: [
-          WordWidget(),
-        ],
+      child: Center(
+        child: WordWidget(),
       ),
     );
 
